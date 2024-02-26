@@ -1,7 +1,7 @@
 export const siteConfig = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Rebel Mosquito - Proudly Serving the Greater Ottawa Region',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Rebel Mosquito is Ontario\'s leading airborne pest control company.We proudly service the greater Ottawa region, from Kingston through to Gatineau/ Hull.',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://www.rebelmosquito.com',
 };
