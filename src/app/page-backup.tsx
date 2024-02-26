@@ -34,16 +34,18 @@ export default function HomePage() {
             <Logo className='w-1/2 mb-8' />
             <h1 className='mt-4'>Stop Mosquitos Dead</h1>
             <p className='mt-2 text-sm text-gray-800'>
-              Rebel Mosquito is Ontario's leading airborne pest control company. We proudly service the greater Ottawa region, from Kingston through to Gatineau/Hull.
+              Rebel Mosquito Control is Ontario's leading air borne pest control company. We proudly service the greater Ottawa region, from Kingston through to Gatineau/Hull.
             </p>
           </div>
           <div className='mt-12'>
             <div className='items-center justify-center text-center py-6'>
-              <h2>Opening Soon</h2>
+              <h2>Request a Quote</h2>
+              <p>Fill out and submit the form below to get a quote</p>
             </div>
+            <Form />
           </div>
 
-          <footer className='items-center justify-center text-center mt-12 text-gray-700'>
+          <footer className='bottom-2 text-gray-700'>
             © {new Date().getFullYear()}{' '}
             Rebel Mosquito
           </footer>
