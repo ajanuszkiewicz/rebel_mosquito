@@ -17,23 +17,17 @@ function ContactForm() {
     }));
   };
 
-  const token = 'UZUbsXQc8KlODQDtSgFQvA';
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        'https://rebelmosquito-679106251063943741.myfreshworks.com/crm/sales/api/contacts',
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Token token=${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ contact: formData }),
+      const response = await fetch('/api/crm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify({ contact: formData }),
+      });
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
