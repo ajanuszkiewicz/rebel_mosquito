@@ -1,22 +1,27 @@
 /* eslint-disable no-console */
 
-import React from 'react';
+import React, { useState } from 'react';
 
-const ContactForm = () => {
-  const formDataRef = {
-    first_name: '',
-    last_name: '',
-    mobile_number: '',
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    mobileNumber: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const token = 'UZUbsXQc8KlODQDtSgFQvA';
 
-  const handleChange = (e) => {
-    formDataRef[e.target.name] = e.target.value;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch(
         'https://rebelmosquito-679106251063943741.myfreshworks.com/crm/sales/api/contacts',
@@ -26,18 +31,22 @@ const ContactForm = () => {
             Authorization: `Token token=${token}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            contact: formDataRef,
-          }),
+          body: JSON.stringify({ contact: formData }),
         },
       );
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
       const data = await response.json();
-      console.log('Contact created:', data);
+      console.log(data); // Handle success response here
+      alert('Contact added successfully!');
+      // Optionally, you can redirect the user to another page after successful submission
+      // window.location.href = 'success.html';
     } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
+      console.error('There was an error!', error);
+      alert('Failed to add contact. Please try again.');
     }
   };
 
@@ -45,37 +54,49 @@ const ContactForm = () => {
     <div>
       <h2>Contact Form</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='first_name'>First Name:</label>
-          <input
-            type='text'
-            id='first_name'
-            name='first_name'
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='last_name'>Last Name:</label>
-          <input
-            type='text'
-            id='last_name'
-            name='last_name'
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='mobile_number'>Mobile Number:</label>
-          <input
-            type='text'
-            id='mobile_number'
-            name='mobile_number'
-            onChange={handleChange}
-          />
-        </div>
+        <label htmlFor='firstName'>First Name:</label>
+        <br />
+        <input
+          type='text'
+          id='firstName'
+          name='firstName'
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
+
+        <label htmlFor='lastName'>Last Name:</label>
+        <br />
+        <input
+          type='text'
+          id='lastName'
+          name='lastName'
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
+
+        <label htmlFor='mobileNumber'>Mobile Number:</label>
+        <br />
+        <input
+          type='tel'
+          id='mobileNumber'
+          name='mobileNumber'
+          value={formData.mobileNumber}
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
+
         <button type='submit'>Submit</button>
       </form>
     </div>
   );
-};
+}
 
 export default ContactForm;
