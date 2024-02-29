@@ -1,19 +1,13 @@
 /* eslint-disable no-console */
 
-import React, { ChangeEvent, FormEvent, useRef } from 'react';
-
-interface FormData {
-  first_name: string;
-  last_name: string;
-  mobile_number: string;
-}
+import React, { ChangeEvent, FormEvent } from 'react';
 
 const ContactForm: React.FC = () => {
-  const formDataRef = useRef<FormData>({
+  const formDataRef = {
     first_name: '',
     last_name: '',
     mobile_number: '',
-  });
+  };
 
   const token = 'UZUbsXQc8KlODQDtSgFQvA';
 
