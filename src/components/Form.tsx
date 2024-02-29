@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useRef } from 'react';
 
 interface FormData {
   first_name: string;
@@ -9,7 +9,7 @@ interface FormData {
 }
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const formDataRef = useRef<FormData>({
     first_name: '',
     last_name: '',
     mobile_number: '',
@@ -18,10 +18,10 @@ const ContactForm: React.FC = () => {
   const token = 'UZUbsXQc8KlODQDtSgFQvA';
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
+    formDataRef.current = {
+      ...formDataRef.current,
       [e.target.name]: e.target.value,
-    });
+    };
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -36,7 +36,7 @@ const ContactForm: React.FC = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            contact: formData,
+            contact: formDataRef.current,
           }),
         },
       );
@@ -60,7 +60,6 @@ const ContactForm: React.FC = () => {
             type='text'
             id='first_name'
             name='first_name'
-            value={formData.first_name}
             onChange={handleChange}
           />
         </div>
@@ -70,7 +69,6 @@ const ContactForm: React.FC = () => {
             type='text'
             id='last_name'
             name='last_name'
-            value={formData.last_name}
             onChange={handleChange}
           />
         </div>
@@ -80,18 +78,11 @@ const ContactForm: React.FC = () => {
             type='text'
             id='mobile_number'
             name='mobile_number'
-            value={formData.mobile_number}
             onChange={handleChange}
           />
         </div>
         <button type='submit'>Submit</button>
       </form>
-      {response && (
-        <div>
-          <h3>Response:</h3>
-          <pre>{JSON.stringify(response, null, 2)}</pre>
-        </div>
-      )}
     </div>
   );
 };
