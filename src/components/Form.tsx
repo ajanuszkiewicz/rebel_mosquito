@@ -29,7 +29,7 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        'http://rebelmosquito-679106251063943741.myfreshworks.com/crm/sales/api/contacts',
+        'https://rebelmosquito-679106251063943741.myfreshworks.com/crm/sales/api/contacts',
         {
           method: 'POST',
           headers: {
