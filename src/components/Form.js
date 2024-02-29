@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
-import React, { ChangeEvent, FormEvent } from 'react';
+import React from 'react';
 
-const ContactForm: React.FC = () => {
+const ContactForm = () => {
   const formDataRef = {
     first_name: '',
     last_name: '',
@@ -11,14 +11,11 @@ const ContactForm: React.FC = () => {
 
   const token = 'UZUbsXQc8KlODQDtSgFQvA';
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    formDataRef.current = {
-      ...formDataRef.current,
-      [e.target.name]: e.target.value,
-    };
+  const handleChange = (e) => {
+    formDataRef[e.target.name] = e.target.value;
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
@@ -30,7 +27,7 @@ const ContactForm: React.FC = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            contact: formDataRef.current,
+            contact: formDataRef,
           }),
         },
       );
