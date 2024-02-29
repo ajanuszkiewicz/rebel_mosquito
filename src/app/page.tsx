@@ -3,10 +3,6 @@
 import Head from 'next/head';
 import * as React from 'react';
 
-import ArrowLink from '@/components/links/ArrowLink';
-import ButtonLink from '@/components/links/ButtonLink';
-import UnderlineLink from '@/components/links/UnderlineLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import Form from '@/components/Form';
 
 /**
@@ -40,6 +36,7 @@ export default function HomePage() {
           <div className='mt-12'>
             <div className='items-center justify-center text-center py-6'>
               <h2>Opening Soon</h2>
+              <Form />
             </div>
           </div>
 
