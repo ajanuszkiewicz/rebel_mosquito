@@ -16,7 +16,6 @@ const ContactForm: React.FC = () => {
   });
 
   const token = 'UZUbsXQc8KlODQDtSgFQvA';
-  const [response, setResponse] = useState(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -45,7 +44,6 @@ const ContactForm: React.FC = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setResponse(data);
       console.log('Contact created:', data);
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
