@@ -1,51 +1,55 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+
+interface FormData {
+  first_name: string;
+  last_name: string;
+  mobile_number: string;
+}
+
+const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     first_name: '',
     last_name: '',
-    mobile_number: ''
+    mobile_number: '',
   });
 
-  const token = 'UZUbsXQc8KlODQDtSgFQvA'
+  const token = 'UZUbsXQc8KlODQDtSgFQvA';
   const [response, setResponse] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    fetch("http://rebelmosquito-679106251063943741.myfreshworks.com/crm/sales/api/contacts", {
-      method: "POST",
-      headers: {
-        "Authorization": "Token token=UZUbsXQc8KlODQDtSgFQvA",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        contact: {
-          first_name: "James",
-          last_name: "Sampleton (sample)",
-          mobile_number: "1-926-555-9503"
-        }
-      })
-    })
-    .then(response => {
+    try {
+      const response = await fetch(
+        'http://rebelmosquito-679106251063943741.myfreshworks.com/crm/sales/api/contacts',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Token token=${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            contact: formData,
+          }),
+        },
+      );
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      return response.json();
-    })
-    .then(data => {
+      const data = await response.json();
+      setResponse(data);
       console.log('Contact created:', data);
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
-    });
-    
+    }
   };
 
   return (
@@ -53,36 +57,36 @@ const ContactForm = () => {
       <h2>Contact Form</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="first_name">First Name:</label>
+          <label htmlFor='first_name'>First Name:</label>
           <input
-            type="text"
-            id="first_name"
-            name="first_name"
+            type='text'
+            id='first_name'
+            name='first_name'
             value={formData.first_name}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="last_name">Last Name:</label>
+          <label htmlFor='last_name'>Last Name:</label>
           <input
-            type="text"
-            id="last_name"
-            name="last_name"
+            type='text'
+            id='last_name'
+            name='last_name'
             value={formData.last_name}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="mobile_number">Mobile Number:</label>
+          <label htmlFor='mobile_number'>Mobile Number:</label>
           <input
-            type="text"
-            id="mobile_number"
-            name="mobile_number"
+            type='text'
+            id='mobile_number'
+            name='mobile_number'
             value={formData.mobile_number}
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
       {response && (
         <div>
