@@ -1,7 +1,11 @@
 h1 {
-  color: #822F89
+  color: #822f89;
 }
 
-/* h2 {
-  color: #822F89
-} */
+h2 {
+  color: #822f89;
+}
+
+.primary-purple {
+  background-color: #822f89;
+}
