@@ -1,15 +1,31 @@
 h1 {
-  color: #822f89;
+  /* color: #822f89; */
 }
 
 h2 {
   color: #822f89;
 }
 
-.primary-purple {
+.purple-background {
   background-color: #822f89;
 }
 
-.primary-text {
+.green-background {
+  background-color: #85f84c;
+}
+
+.purple-text {
   color: #822f89;
+}
+
+.green-text {
+  color: #85f84c;
+}
+
+.green-border {
+  border-color: #85f84c;
+}
+
+.purple-border {
+  border-color: #822f89;
 }

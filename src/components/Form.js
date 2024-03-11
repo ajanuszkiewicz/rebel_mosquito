@@ -72,7 +72,7 @@ export default function Example() {
         </div>
       )}
       {!isLoading && !goodResponse && (
-        <div className='isolate bg-white mt-20 px-6 lg:px-8'>
+        <div className='isolate px-6 lg:px-8'>
           <form onSubmit={handleSubmit} className='mx-auto max-w-xl'>
             <div className='grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2'>
               <div>
@@ -168,7 +168,7 @@ export default function Example() {
             <div className='mt-10'>
               <button
                 type='submit'
-                className='block w-full rounded-md primary-purple px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                className='block w-full rounded-md green-background px-3.5 py-2.5 text-center text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
               >
                 Submit
               </button>
