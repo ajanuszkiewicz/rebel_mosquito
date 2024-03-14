@@ -12,7 +12,6 @@ export default function HomePage() {
       <Head>
         <title>Hi</title>
       </Head>
-
       <div className='relative isolate overflow-hidden py-12'>
         <Image
           src='/images/hero-image.jpg'
