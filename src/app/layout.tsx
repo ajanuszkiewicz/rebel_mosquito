@@ -1,5 +1,6 @@
-import { Metadata } from 'next';
 import * as React from 'react';
+
+import { Metadata } from 'next';
 import PlausibleProvider from 'next-plausible'
 
 import '@/styles/globals.css';
@@ -7,6 +8,7 @@ import '@/styles/globals.css';
 import '@/styles/colors.css';
 
 import { siteConfig } from '@/constant/config';
+
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them

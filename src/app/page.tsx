@@ -5,10 +5,12 @@ import Image from 'next/image';
 import * as React from 'react';
 
 import Form from '@/components/Form';
+import Navigation from '@/components/Navigation'
 
 export default function HomePage() {
   return (
     <main>
+      <Navigation />
       <Head>
         <title>Hi</title>
       </Head>
@@ -81,11 +83,10 @@ export default function HomePage() {
           <div className='py-6'>
             <div className='items-center justify-center text-center py-8 rounded-md border-2 max-w-2xl m-auto bg-purple-50 border-solid'>
               <h2 className='text-3xl font-bold tracking-tight sm:text-4xl'>
-                Let us handle those buzzkills!
+                Ready to Enjoy a Pest-Free Summer?
               </h2>
               <p className='my-6 text-lg leading-8 text-gray-600 lg:px-20'>
-                Fill out the form below to learn more about mosquito control and
-                our service.
+                Complete Seasonal Mosquito & Tick Control from just $595
               </p>
               <Form />
             </div>
